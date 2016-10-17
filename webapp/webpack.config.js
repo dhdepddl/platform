@@ -72,12 +72,18 @@ var config = {
                 loaders: ['style', 'css']
             },
             {
-                test: /\.(png|eot|tiff|svg|woff2|woff|ttf|gif|mp3|jpg)$/,
+                test: /\.(eot|tiff|svg|woff2|woff|ttf|mp3)$/,
                 loaders: [
                     'file?name=files/[hash].[ext]',
                     'image-webpack'
                 ]
             },
+	    {
+		test: /\.(png|gif|jpg)$/,
+		loaders: [
+		    'file?name=files/[hash].[ext]'
+		]
+	    }
             {
                 test: /\.html$/,
                 loader: 'html?attrs=link:href'

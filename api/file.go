@@ -183,7 +183,7 @@ func handleImages(filenames []string, fileData [][]byte, teamId, channelId, user
 			}
 
 			width := img.Bounds().Dx()
-			height := img.Bounds().Dy()
+			//height := img.Bounds().Dy()
 
 			// Get the image's orientation and ignore any errors since not all images will have orientation data
 			orientation, _ := getImageOrientation(fileData[i])
@@ -213,33 +213,33 @@ func handleImages(filenames []string, fileData [][]byte, teamId, channelId, user
 			}
 
 			// Create thumbnail
-			go func() {
-				thumbWidth := float64(utils.Cfg.FileSettings.ThumbnailWidth)
-				thumbHeight := float64(utils.Cfg.FileSettings.ThumbnailHeight)
-				imgWidth := float64(width)
-				imgHeight := float64(height)
-
-				var thumbnail image.Image
-				if imgHeight < thumbHeight && imgWidth < thumbWidth {
-					thumbnail = img
-				} else if imgHeight/imgWidth < thumbHeight/thumbWidth {
-					thumbnail = imaging.Resize(img, 0, utils.Cfg.FileSettings.ThumbnailHeight, imaging.Lanczos)
-				} else {
-					thumbnail = imaging.Resize(img, utils.Cfg.FileSettings.ThumbnailWidth, 0, imaging.Lanczos)
-				}
-
-				buf := new(bytes.Buffer)
-				err = jpeg.Encode(buf, thumbnail, &jpeg.Options{Quality: 90})
-				if err != nil {
-					l4g.Error(utils.T("api.file.handle_images_forget.encode_jpeg.error"), channelId, userId, filename, err)
-					return
-				}
-
-				if err := WriteFile(buf.Bytes(), dest+name+"_thumb.jpg"); err != nil {
-					l4g.Error(utils.T("api.file.handle_images_forget.upload_thumb.error"), channelId, userId, filename, err)
-					return
-				}
-			}()
+//			go func() {
+//				thumbWidth := float64(utils.Cfg.FileSettings.ThumbnailWidth)
+//				thumbHeight := float64(utils.Cfg.FileSettings.ThumbnailHeight)
+//				imgWidth := float64(width)
+//				imgHeight := float64(height)
+//
+//				var thumbnail image.Image
+//				if imgHeight < thumbHeight && imgWidth < thumbWidth {
+//					thumbnail = img
+//				} else if imgHeight/imgWidth < thumbHeight/thumbWidth {
+//					thumbnail = imaging.Resize(img, 0, utils.Cfg.FileSettings.ThumbnailHeight, imaging.Lanczos)
+//				} else {
+//					thumbnail = imaging.Resize(img, utils.Cfg.FileSettings.ThumbnailWidth, 0, imaging.Lanczos)
+//				}
+//
+//				buf := new(bytes.Buffer)
+//				err = jpeg.Encode(buf, thumbnail, &jpeg.Options{Quality: 90})
+//				if err != nil {
+//					l4g.Error(utils.T("api.file.handle_images_forget.encode_jpeg.error"), channelId, userId, filename, err)
+//					return
+//				}
+//
+//				if err := WriteFile(buf.Bytes(), dest+name+"_thumb.jpg"); err != nil {
+//					l4g.Error(utils.T("api.file.handle_images_forget.upload_thumb.error"), channelId, userId, filename, err)
+//					return
+//				}
+//			}()
 
 			// Create preview
 			go func() {

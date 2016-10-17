@@ -169,12 +169,12 @@ class ViewImageModal extends React.Component {
 
         if (fileType === 'image') {
             let previewUrl;
-            if (fileInfo.has_image_preview) {
-                previewUrl = Utils.getPreviewImagePath(filename);
-            } else {
+            //if (fileInfo.has_image_preview) {
+            //    previewUrl = Utils.getPreviewImagePath(filename);
+            //} else {
                 // some images (eg animated gifs) just show the file itself and not a preview
                 previewUrl = Utils.getFileUrl(filename);
-            }
+            //}
 
             const img = new Image();
             img.load(
@@ -407,11 +407,11 @@ LoadingImagePreview.propTypes = {
 
 function ImagePreview({filename, fileUrl, fileInfo, maxHeight}) {
     let previewUrl;
-    if (fileInfo.has_preview_image) {
-        previewUrl = Utils.getPreviewImagePath(filename);
-    } else {
+//    if (fileInfo.has_preview_image) {
+//        previewUrl = Utils.getPreviewImagePath(filename);
+//    } else {
         previewUrl = fileUrl;
-    }
+//    }
 
     return (
         <a

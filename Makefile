@@ -407,7 +407,7 @@ clean: stop-docker
 	rm -Rf $(DIST_ROOT)
 	go clean $(GOFLAGS) -i ./...
 
-	cd $(BUILD_WEBAPP_DIR) && $(MAKE) clean
+	#cd $(BUILD_WEBAPP_DIR) && $(MAKE) clean
 
 	rm -rf api/data
 	rm -rf logs

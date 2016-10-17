@@ -162,15 +162,20 @@
 .post-image__column {
     border: 1px solid alpha-color($black, .2);
     float: left;
-    height: 100px;
+    height: 60px;
     margin: 5px 10px 5px 0;
     position: relative;
-    width: 240px;
+    width: 300px;
+    &.image {
+	height: 300px;
+	width: 400px;
+    }
 }
 
 .post-image__load {
     background-position: center;
     background-repeat: no-repeat;
+    background-size: contain;
     background-size: 20px 20px;
     height: 100%;
     width: 100%;
@@ -179,6 +184,7 @@
 .post-image {
     background-color: $white;
     background-repeat: no-repeat;
+    background-size: contain;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -219,12 +225,16 @@
 
 .post-image__thumbnail {
     @include cursor(zoom-in);
-    float: left;
+    float: left; 
     height: 100%;
-    width: 50%;
+    width: 20%;
+    &.image {
+	height: 85%;
+	width: 100%;
+    }
 }
 
-.post-image__details {
+.post-image__details { 
     @include clearfix;
     background: $white;
     border-left: 1px solid $light-gray;
@@ -232,9 +242,13 @@
     float: left;
     font-size: 13px;
     height: 100%;
-    padding: 7px;
-    width: 50%;
+    padding: 3px;
+    width: 80%;
     word-break: break-word;
+    &.image {
+	height: 15%;
+	width: 100%;
+    }
 
     .post-image__name {
         display: block;

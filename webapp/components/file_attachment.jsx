@@ -49,7 +49,7 @@ class FileAttachment extends React.Component {
 
             if (type === 'image') {
                 var self = this; // Need this reference since we use the given "this"
-                $('<img/>').attr('src', fileInfo.path + '_thumb.jpg').on('load', (function loadWrapper(path, name) {
+                $('<img/>').attr('src', fileInfo.path + '_preview.jpg').on('load', (function loadWrapper(path, name) {
                     return function loader() {
                         $(this).remove();
                         if (name in self.refs) {
@@ -120,7 +120,7 @@ class FileAttachment extends React.Component {
             var re3 = new RegExp('\\)', 'g');
             var url = fileUrl.replace(re1, '%20').replace(re2, '%28').replace(re3, '%29');
 
-            $(imgDiv).css('background-image', 'url(' + url + '_thumb.jpg)');
+            $(imgDiv).css('background-image', 'url(' + url + '_preview.jpg)');
         }
     }
     removeBackgroundImage(name) {
@@ -216,38 +216,74 @@ class FileAttachment extends React.Component {
             );
         }
 
-        return (
-            <div
-                className='post-image__column'
-                key={filename}
-            >
-                <a
-                    className='post-image__thumbnail'
-                    href='#'
-                    onClick={this.onAttachmentClick}
-                >
-                    {thumbnail}
-                </a>
-                <div className='post-image__details'>
-                    {filenameOverlay}
-                    <div>
-                        <a
-                            href={fileUrl}
-                            download={filenameString}
-                            className='post-image__download'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                        >
-                            <span
-                                className='fa fa-download'
-                            />
-                        </a>
-                        <span className='post-image__type'>{fileInfo.ext.toUpperCase()}</span>
-                        <span className='post-image__size'>{fileSizeString}</span>
-                    </div>
-                </div>
-            </div>
-        );
+        if (type === 'image') {
+    	    return(
+    		<div
+                   className='post-image__column image'
+                   key={filename}
+               >
+                   <a
+                       className='post-image__thumbnail image'
+                       href='#'
+                       onClick={this.onAttachmentClick}
+                   >
+                       {thumbnail}
+                   </a>
+                   <div className='post-image__details image'>
+                       {filenameOverlay}
+                       <div>
+                           <a
+                               href={fileUrl}
+                               download={filenameString}
+                               className='post-image__download'
+                               target='_blank'
+                               rel='noopener noreferrer'
+                           >
+                               <span
+                                   className='fa fa-download'
+                               />
+                           </a>
+                           <span className='post-image__type'>{fileInfo.ext.toUpperCase()}</span>
+                           <span className='post-image__size'>{fileSizeString}</span>
+                       </div>
+                   </div>
+               </div>
+    	    );
+        }
+        else {
+    	    return(
+               <div 
+		    className='post-image__column'
+                    key={filename}
+                   >
+                       <a
+                           className='post-image__thumbnail'
+                           href='#'
+                           onClick={this.onAttachmentClick}
+                       >
+                           {thumbnail}
+                       </a>
+                       <div className='post-image__details'>
+                           {filenameOverlay}
+                           <div>
+                               <a
+                                   href={fileUrl}
+                                   download={filenameString}
+                                   className='post-image__download'
+                                   target='_blank'
+                                   rel='noopener noreferrer'
+                               >
+                                   <span
+                                       className='fa fa-download'
+                                   />
+                               </a>
+                               <span className='post-image__type'>{fileInfo.ext.toUpperCase()}</span>
+                               <span className='post-image__size'>{fileSizeString}</span>
+                           </div>
+                       </div>
+                   </div>
+    	    );
+        }
     }
 }
 

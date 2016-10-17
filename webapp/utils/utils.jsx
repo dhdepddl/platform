@@ -457,7 +457,7 @@ export function getPreviewImagePath(filename) {
     const fileType = getFileType(fileInfo.ext);
 
     if (fileType === 'image') {
-        return getFileUrl(fileInfo.path + '_preview.jpg');
+        return getFileUrl(fileInfo.path + '.jpg');
     }
 
     // only images have proper previews, so just use a placeholder icon for non-images

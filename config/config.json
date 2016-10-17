@@ -13,7 +13,7 @@
         "EnablePostUsernameOverride": false,
         "EnablePostIconOverride": false,
         "EnableTesting": false,
-        "EnableDeveloper": false,
+        "EnableDeveloper": true,
         "EnableSecurityFixAlert": true,
         "EnableInsecureOutgoingConnections": false,
         "EnableMultifactorAuthentication": false,
@@ -31,17 +31,17 @@
     "TeamSettings": {
         "SiteName": "Mattermost",
         "MaxUsersPerTeam": 50,
-        "EnableTeamCreation": true,
+        "EnableTeamCreation": false,
         "EnableUserCreation": true,
         "EnableOpenServer": false,
-        "RestrictCreationToDomains": "",
+        "RestrictCreationToDomains": "nexon.co.kr",
         "RestrictTeamNames": true,
         "EnableCustomBrand": false,
         "CustomBrandText": "",
         "CustomDescriptionText": "",
         "RestrictDirectMessage": "any",
         "RestrictTeamInvite": "all",
-        "RestrictPublicChannelManagement": "all",
+        "RestrictPublicChannelManagement": "team_admin, system_admin",
         "RestrictPrivateChannelManagement": "all",
         "UserStatusAwayTimeout": 300
     },
@@ -52,7 +52,7 @@
         "MaxIdleConns": 10,
         "MaxOpenConns": 10,
         "Trace": false,
-        "AtRestEncryptKey": ""
+        "AtRestEncryptKey": "m5sps865dr3ij1xc733x87cpbigjhjwn"
     },
     "LogSettings": {
         "EnableConsole": true,
@@ -76,7 +76,7 @@
         "DriverName": "local",
         "Directory": "./data/",
         "EnablePublicLink": false,
-        "PublicLinkSalt": "",
+        "PublicLinkSalt": "sozkq43and65p5665pbthixz3xcwf336",
         "ThumbnailWidth": 120,
         "ThumbnailHeight": 100,
         "PreviewWidth": 1024,
@@ -107,8 +107,8 @@
         "SMTPServer": "",
         "SMTPPort": "",
         "ConnectionSecurity": "",
-        "InviteSalt": "",
-        "PasswordResetSalt": "",
+        "InviteSalt": "uuz7m6d1q5f9fw6t9wupzt8dnqa5ksqd",
+        "PasswordResetSalt": "6rcrhujr91m6kzpnekoeeaagctcyegur",
         "SendPushNotifications": false,
         "PushNotificationServer": "",
         "PushNotificationContents": "generic",
@@ -189,9 +189,9 @@
         "EnableDaily": false
     },
     "LocalizationSettings": {
-        "DefaultServerLocale": "en",
-        "DefaultClientLocale": "en",
-        "AvailableLocales": ""
+        "DefaultServerLocale": "ko",
+        "DefaultClientLocale": "ko",
+        "AvailableLocales": "en,ko,ja,zh_CN,zh_TW"
     },
     "SamlSettings": {
         "Enable": false,
